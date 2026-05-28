@@ -72,11 +72,16 @@ export function Hero() {
             Full Stack Developer
           </motion.p>
 
-          <motion.div
+         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            style={{ display: "flex", flexDirection: "column", alignItems: isMobile ? "flex-start" : "flex-end", gap: "0.3rem" }}
+            style={{ 
+              display: "flex", 
+              flexDirection: "column", 
+              alignItems: isMobile ? "flex-start" : "flex-end", 
+              gap: "0.5rem" 
+            }}
           >
             <span style={{
               display: "flex", alignItems: "center", gap: "0.6rem",
@@ -94,7 +99,40 @@ export function Hero() {
               />
               Disponível para oportunidades
             </span>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.05em", color: "var(--muted-custom)", paddingRight: "0.25rem" }}>Recife, BR</span>
+
+            <div style={{ 
+              display: "flex", 
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: isMobile ? "flex-start" : "center", 
+              gap: isMobile ? "0.4rem" : "0.75rem",
+              paddingRight: "0.25rem",
+              marginTop: "0.2rem"
+            }}>
+              <span style={{ fontSize: "0.75rem", letterSpacing: "0.05em", color: "var(--muted-custom)" }}>
+                Recife, BR
+              </span>
+
+              {!isMobile && <span style={{ color: "var(--border)", fontSize: "0.75rem" }}>|</span>}
+
+              <span style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.35rem",
+                background: "var(--card-bg, rgba(120,120,120,0.04))",
+                border: "1px solid var(--border)",
+                padding: "0.15rem 0.45rem",
+                borderRadius: "4px",
+                fontSize: "0.72rem",
+                fontWeight: 500,
+                color: "var(--fg)",
+              }}>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
+                </svg>
+                EN <span style={{ color: "var(--muted-custom)", fontWeight: 400 }}>Advanced</span>
+              </span>
+            </div>
           </motion.div>
         </div>
 
