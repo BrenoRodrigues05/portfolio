@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TabTitleChanger } from "@/components/TabTitleChanger";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange={false}
         >
+          <TabTitleChanger />
           {children}
         </ThemeProvider>
       </body>
