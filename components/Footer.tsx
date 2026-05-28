@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer style={{
-      borderTop: "0.5px solid rgba(255,255,255,0.07)",
+      borderTop: "0.5px solid var(--border)",
       padding: "1.75rem 1.5rem",
     }}>
       <div style={{
@@ -11,16 +11,16 @@ export function Footer() {
         alignItems: "center",
         justifyContent: "space-between",
       }}>
-        <p style={{ fontSize: "0.78rem", color: "#3f3f46" }}>
+        <p style={{ fontSize: "0.85rem", color: "var(--fg)", fontWeight: 500 }}>
           © 2026 Breno Rodrigues
         </p>
         <div style={{ display: "flex", gap: "1.5rem" }}>
           <a href="https://github.com/BrenoRodrigues05" target="_blank" rel="noreferrer"
-            style={{ fontSize: "0.78rem", color: "#3f3f46", textDecoration: "none" }}>
+            style={{ fontSize: "0.85rem", color: "var(--fg)", textDecoration: "none", fontWeight: 500 }}>
             GitHub
           </a>
           <a href="https://www.linkedin.com/in/brenorodrigues05/" target="_blank" rel="noreferrer"
-            style={{ fontSize: "0.78rem", color: "#3f3f46", textDecoration: "none" }}>
+            style={{ fontSize: "0.85rem", color: "var(--fg)", textDecoration: "none", fontWeight: 500 }}>
             LinkedIn
           </a>
         </div>
