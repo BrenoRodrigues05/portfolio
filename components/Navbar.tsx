@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ModeToggle } from "@/components/mode-toggle"
+import { ModeToggle } from "@/components/mode-toggle";
 
 const links = [
   { label: "Sobre", href: "#about" },
@@ -22,6 +22,24 @@ export function Navbar() {
     [0, 50],
     ["0 0 0 rgba(0,0,0,0)", "0 10px 30px -10px rgba(0, 0, 0, 0.1)"]
   );
+
+  const menuVariants: Variants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        staggerChildren: 0.05,
+        duration: 0.25,
+        ease: "easeOut" 
+      } 
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, x: 10 },
+    visible: { opacity: 1, x: 0 }
+  };
 
   return (
     <motion.header
@@ -109,37 +127,42 @@ export function Navbar() {
 
       {open && (
         <motion.ul
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
+          initial="hidden"
+          animate="visible"
+          variants={menuVariants}
           className="navbar-mobile"
           style={{
             display: "flex",
             flexDirection: "column",
+            alignItems: "flex-end", 
+            textAlign: "right",     
             listStyle: "none",
-            padding: "1rem 1.5rem 1.5rem",
+            padding: "1rem 1.5rem 1.75rem",
             gap: "1.25rem",
             borderTop: "0.5px solid var(--border)",
             background: "var(--bg-blur)",
+            backdropFilter: "blur(12px)",
           }}
         >
           {links.map((link) => (
-            <li key={link.href}>
+            <motion.li key={link.href} variants={itemVariants} style={{ width: "100%" }}>
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
                 style={{
+                  display: "block", 
                   fontSize: "0.95rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.1em",
                   color: "var(--fg)",
                   textDecoration: "none",
                   fontWeight: 500,
+                  padding: "0.25rem 0",
                 }}
               >
                 {link.label}
               </a>
-            </li>
+            </motion.li>
           ))}
         </motion.ul>
       )}
