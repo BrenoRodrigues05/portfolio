@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Meu Portfólio Profissional
 
-## Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+</p>
 
-First, run the development server:
+<p align="center">
+  🎯 <b>Acesse o projeto online:</b> <a href="https://www.brenorodriguesdev.com.br/">brenorodriguesdev.com.br</a>
+</p>
 
+---
+
+## 🚀 Sobre o Projeto
+
+Este é o repositório do meu portfólio profissional. Desenvolvido com **React** e **Vite**, o objetivo deste projeto é centralizar e apresentar de forma clara, moderna e responsiva a minha trajetória, minhas principais habilidades técnicas e as soluções que venho desenvolvendo no ecossistema de software.
+
+O site foi pensado para oferecer uma navegação fluida (Single Page Application), garantindo que recrutadores e desenvolvedores encontrem facilmente minhas informações de contato e repositórios de código.
+
+## 🛠️ Tecnologias e Ferramentas Utilizadas
+
+* **Front-end:** React.js, JavaScript (ES6+).
+* **Build Tool:** Vite (para um ambiente de desenvolvimento rápido e build otimizado).
+* **Estilização:** CSS3 estruturado com foco em responsiveness e design moderno.
+* **Componentização:** Arquitetura focada em componentes reutilizáveis e código limpo.
+
+## 🎯 Principais Recursos
+
+* 📱 **Layout 100% Responsivo:** Adaptado perfeitamente para dispositivos móveis, tablets e desktops.
+* ⚡ **Performance Otimizada:** Carregamento rápido graças à estrutura leve do Vite.
+* 💼 **Vitrine de Projetos:** Área dedicada para destacar minhas principais aplicações (como soluções robustas em **.NET 8 / C#**, **Docker** e integrações front-end).
+* 📞 **Acesso Direto:** Links integrados para minhas redes profissionais e canais de contato.
+
+---
+
+## 📦 Como rodar o projeto localmente
+
+Se você deseja clonar este repositório para analisar a estrutura do código ou rodar na sua máquina, siga os passos abaixo:
+
+1. **Clone o repositório:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone [https://github.com/BrenoRodrigues05/portfolio.git](https://github.com/BrenoRodrigues05/portfolio.git)
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Entre no diretório do projeto:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+   cd portfolio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+3. **Instale as dependências:**
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+   npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Inicie o servidor de desenvolvimento:**
 
-## Deploy on Vercel
+```bash
+   npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*O projeto estará disponível no seu navegador no endereço indicado pelo terminal (geralmente `http://localhost:5173`).*
+
+---
+
+## 📬 Contato & Redes Sociais
+
+Fique à vontade para se conectar comigo ou mandar um feedback sobre o projeto!
+
+* **LinkedIn:** [Acesse meu perfil no LinkedIn](https://www.linkedin.com/in/brenorodrigues05/)
+* **GitHub:** [BrenoRodrigues05](https://github.com/BrenoRodrigues05)
+
+---
+
+Agora sim está 100% certo e pronto para brilhar no seu perfil!
