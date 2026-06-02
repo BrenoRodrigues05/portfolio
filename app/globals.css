@@ -174,7 +174,7 @@ section {
 }
 
 @media (min-width: 769px) {
-  body, a, button {
+  body, body *, a, button, div {
     cursor: none !important;
   }
 }

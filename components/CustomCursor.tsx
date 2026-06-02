@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function CustomCursor() {
@@ -10,14 +10,11 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - (isHovered ? 24 : 10));
-      cursorY.set(e.clientY - (isHovered ? 24 : 10));
+      const size = isHovered ? 48 : 20;
+      cursorX.set(e.clientX - size / 2);
+      cursorY.set(e.clientY - size / 2);
       
       if (!isVisible) setIsVisible(true);
     };
@@ -57,15 +54,18 @@ export function CustomCursor() {
         width: isHovered ? "48px" : "20px",
         height: isHovered ? "48px" : "20px",
         borderRadius: "50%",
-        border: isHovered ? "1.5px solid rgba(79,142,247,0.8)" : "1.5px solid var(--fg)",
-        background: isHovered ? "rgba(79,142,247,0.05)" : "transparent",
+        border: isHovered ? "2.5px solid rgba(79,142,247,1)" : "2px solid var(--fg)",
+        background: isHovered ? "rgba(79,142,247,0.15)" : "rgba(255, 255, 255, 0.02)",
         pointerEvents: "none", 
         zIndex: 9999, 
-        x: cursorXSpring,
-        y: cursorYSpring,
+        x: cursorX, 
+        y: cursorY, 
         opacity: isVisible ? 1 : 0,
-        transition: "width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s",
-        boxShadow: isHovered ? "0 0 15px rgba(79,142,247,0.3)" : "none",
+        backdropFilter: isHovered ? "blur(2px)" : "none",
+        transition: "width 0.15s ease-out, height 0.15s ease-out, border-color 0.15s, background-color 0.15s, box-shadow 0.15s",
+        boxShadow: isHovered 
+          ? "0 0 20px rgba(79,142,247,0.5), inset 0 0 10px rgba(79,142,247,0.2)" 
+          : "0 0 10px rgba(0, 0, 0, 0.1)",
       }}
     />
   );
