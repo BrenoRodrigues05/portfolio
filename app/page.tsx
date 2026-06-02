@@ -8,10 +8,12 @@ import { Projects } from "@/sections/Projects";
 import { Contact } from "@/sections/Contact";
 import { Certifications } from "@/sections/Certifications";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export default function Home() {
   return (
     <main className="overflow-hidden">
+      <CustomCursor />
       <Navbar />
       <Hero />
       <About />
