@@ -7,6 +7,7 @@ import { Stack } from "@/sections/Stack";
 import { Projects } from "@/sections/Projects";
 import { Contact } from "@/sections/Contact";
 import { Certifications } from "@/sections/Certifications";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Certifications />
       <Projects />
       <Contact />
+      <ScrollToTop />
       <Footer />
     </main>
   );
