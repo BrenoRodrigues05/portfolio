@@ -6,7 +6,7 @@ import { FaDatabase, FaJava } from "react-icons/fa6";
 import {
   SiSharp, SiDotnet, SiReact, SiNextdotjs, SiTypescript,
   SiTailwindcss, SiDocker, SiGit, SiSpringboot, SiMysql,
-  SiPostgresql, SiDbeaver,
+  SiPostgresql, SiDbeaver, SiPostman, SiNodedotjs
 } from "react-icons/si";
 
 const categories = [
@@ -17,6 +17,7 @@ const categories = [
     technologies: [
       { name: "C#", icon: SiSharp },
       { name: ".NET", icon: SiDotnet },
+      { name: "Entity Framework", icon: SiDotnet }, 
       { name: "Java", icon: FaJava },
       { name: "Spring Boot", icon: SiSpringboot },
     ],
@@ -30,6 +31,7 @@ const categories = [
       { name: "Next.js", icon: SiNextdotjs },
       { name: "TypeScript", icon: SiTypescript },
       { name: "Tailwind", icon: SiTailwindcss },
+      { name: "Node.js", icon: SiNodedotjs }, 
     ],
   },
   {
@@ -40,9 +42,10 @@ const categories = [
       { name: "SQL Server", icon: FaDatabase },
       { name: "MySQL", icon: SiMysql },
       { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "DBeaver", icon: SiDbeaver },
       { name: "Docker", icon: SiDocker },
       { name: "Git", icon: SiGit },
+      { name: "DBeaver", icon: SiDbeaver },
+      { name: "Postman", icon: SiPostman }, 
     ],
   },
 ];
