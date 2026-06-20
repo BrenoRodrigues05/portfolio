@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Terminal } from "lucide-react"; 
 
 const links = [
   { label: "Sobre", href: "#about" },
@@ -78,7 +79,20 @@ export function Navbar() {
         justifyContent: "space-between",
         padding: "1.25rem 1.5rem",
       }}>
-        <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem", letterSpacing: "-0.01em" }}>
+        <span style={{ 
+          fontFamily: "var(--font-serif)", 
+          fontSize: "1.1rem", 
+          letterSpacing: "-0.01em",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          color: "var(--fg)"
+        }}>
+          <Terminal 
+            size={16} 
+            strokeWidth={1.5} 
+            style={{ color: "var(--muted-custom)" }} 
+          />
           Breno Rodrigues
         </span>
 
