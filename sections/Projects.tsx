@@ -7,32 +7,36 @@ import { useState } from "react";
 const projects = [
   {
     title: "Gastos Residenciais",
-    description: "Aplicação full-stack de controle financeiro doméstico. Inclui um ecossistema robusto com processamento de dados e autenticação, totalmente containerizado.",
-    technologies: [".NET", "React", "SQL Server", "Docker"],
+    description: "Aplicação full-stack para controle financeiro doméstico desenvolvida sob princípios da Clean Architecture. Inclui ecossistema robusto de processamento, isolamento de dependências e ambiente totalmente containerizado com Docker Compose.",
+    technologies: [".NET 8", "React", "SQL Server", "Docker"],
+    testTech: "xUnit (95% Coverage)",
     github: "https://github.com/BrenoRodrigues05/GastosResidenciais",
     accent: "rgba(79,142,247,0.6)",
     accentSoft: "rgba(79,142,247,0.06)",
   },
   {
-    title: "Gerenciamento de Eventos API",
-    description: "API RESTful para gerenciamento de eventos e inscrições utilizando ASP.NET Core, Entity Framework Core e arquitetura em camadas.",
-    technologies: ["ASP.NET Core", "Entity Framework", "SQL Server", "JWT"],
-    github: "https://github.com/BrenoRodrigues05/gerenciamento-eventos-api",
-    accent: "rgba(168,85,247,0.6)",
-    accentSoft: "rgba(168,85,247,0.06)",
-  },
-  {
     title: "Sistema de Academia API",
-    description: "Aplicação backend com Java e Spring Boot focada em APIs escaláveis e arquitetura corporativa robusta pensada para gerenciar alunos, planos e matrículas de uma academia.",
+    description: "Solução de backend corporativo construída em Java e Spring Boot focada em resiliência e boas práticas de design. Implementa regras complexas de negócios para gestão automatizada de planos, alunos e matrículas.",
     technologies: ["Java", "Spring Boot", "JPA", "PostgreSQL"],
+    testTech: "JUnit/Mockito",
     github: "https://github.com/BrenoRodrigues05/academia-api",
     accent: "rgba(34,197,94,0.6)",
     accentSoft: "rgba(34,197,94,0.06)",
   },
   {
+    title: "Gerenciamento de Eventos API",
+    description: "API RESTful escalável para gerenciamento de eventos e inscrições. Desenvolvida em arquitetura em camadas estruturada com ASP.NET Core, persistência otimizada via Entity Framework Core e segurança via tokens JWT.",
+    technologies: ["ASP.NET Core", "Entity Framework", "SQL Server", "JWT"],
+    testTech: "xUnit Tests",
+    github: "https://github.com/BrenoRodrigues05/gerenciamento-eventos-api",
+    accent: "rgba(168,85,247,0.6)",
+    accentSoft: "rgba(168,85,247,0.06)",
+  },
+  {
     title: "Estoque Loja API",
-    description: "Sistema backend para gerenciamento de estoque com repository pattern, DTOs, paginação reutilizável e boas práticas de arquitetura.",
+    description: "Sistema de alta performance para controle de inventário mercantil. Arquitetura desacoplada utilizando Repository Pattern, transferência limpa de dados com DTOs/AutoMapper e paginação dinâmica reutilizável a nível de infraestrutura.",
     technologies: ["C#", "ASP.NET Core", "SQL Server", "AutoMapper"],
+    testTech: "xUnit (100% Services)",
     github: "https://github.com/BrenoRodrigues05/estoque-loja-api",
     accent: "rgba(251,146,60,0.6)",
     accentSoft: "rgba(251,146,60,0.06)",
@@ -113,6 +117,21 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       </p>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+        {project.testTech && (
+          <span style={{
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            color: "#10b981", 
+            background: "rgba(16, 185, 129, 0.08)",
+            border: "0.5px solid rgba(16, 185, 129, 0.3)",
+            padding: "0.3rem 0.7rem",
+            borderRadius: "3px",
+            letterSpacing: "0.03em",
+          }}>
+            ✓ {project.testTech}
+          </span>
+        )}
+
         {project.technologies.map((tech) => (
           <span key={tech} style={{
             fontSize: "0.72rem",
