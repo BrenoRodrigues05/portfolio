@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display, Geist } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import { TabTitleChanger } from "@/components/TabTitleChanger";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: "400",
-  display: "swap",
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Breno Rodrigues",
+  title: "Breno Rodrigues // Dev",
   description: "Full Stack Developer",
 };
 
@@ -23,17 +16,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
-      <body className={`${geist.variable} ${dmSerif.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange={false}
-        >
-          <TabTitleChanger />
-          {children}
-        </ThemeProvider>
+    <html
+      lang="pt-BR"
+      className={cn("dark font-sans", geist.variable, mono.variable)}
+    >
+      <body className="antialiased bg-background text-foreground selection:bg-cyan-500/20 selection:text-cyan-400">
+        <TabTitleChanger />
+        {children}
       </body>
     </html>
   );

@@ -1,28 +1,26 @@
 "use client";
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
-import { ModeToggle } from "@/components/mode-toggle";
+import { useState } from "react";
 import { Terminal } from "lucide-react"; 
 
 const links = [
-  { label: "Sobre", href: "#about" },
-  { label: "Stack", href: "#stack" },
-  { label: "Certificações", href: "#certifications" },
-  { label: "Projetos", href: "#projects" },
-  { label: "Contato", href: "#contact" },
+  { id: "01", label: "Sobre", href: "#about" },
+  { id: "02", label: "Stack", href: "#stack" },
+  { id: "03", label: "Certificações", href: "#certifications" },
+  { id: "04", label: "Projetos", href: "#projects" },
+  { id: "05", label: "Contato", href: "#contact" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
 
-  const navOpacity = useTransform(scrollY, [0, 50], [0, 1]);
-  
-  const boxShadow = useTransform(
+  const navOpacity = useTransform(scrollY, [0, 50], [0.6, 0.95]);
+  const borderGlow = useTransform(
     scrollY,
     [0, 50],
-    ["0 0 0 rgba(0,0,0,0)", "0 10px 30px -10px rgba(0, 0, 0, 0.1)"]
+    ["rgba(0, 240, 255, 0.1)", "rgba(0, 240, 255, 0.35)"]
   );
 
   const menuVariants: Variants = {
@@ -54,8 +52,6 @@ export function Navbar() {
         left: 0,             
         right: 0,            
         zIndex: 50,
-        boxShadow: boxShadow,
-        transition: "box-shadow 0.3s ease",
         width: "100%",       
       }}
     >
@@ -64,7 +60,8 @@ export function Navbar() {
           position: "absolute",
           inset: 0,
           background: "var(--bg-blur)",
-          borderBottom: "0.5px solid var(--border)",
+          borderBottom: "1px solid",
+          borderColor: borderGlow,
           backdropFilter: "blur(12px)",
           opacity: navOpacity, 
           zIndex: -1,
@@ -77,67 +74,65 @@ export function Navbar() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "1.25rem 1.5rem",
+        padding: "1rem 1.5rem",
       }}>
-        <span style={{ 
-          fontFamily: "var(--font-serif)", 
-          fontSize: "1.1rem", 
-          letterSpacing: "-0.01em",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          color: "var(--fg)"
-        }}>
-          <Terminal 
-            size={16} 
-            strokeWidth={1.5} 
-            style={{ color: "var(--muted-custom)" }} 
-          />
-          Breno Rodrigues
-        </span>
+        <a 
+          href="#" 
+          style={{ 
+            fontFamily: "var(--font-mono)", 
+            fontSize: "0.95rem", 
+            display: "flex",
+            alignItems: "center",
+            gap: "0.6rem",
+            color: "var(--fg)",
+            textDecoration: "none"
+          }}
+        >
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "28px",
+            height: "28px",
+            borderRadius: "4px",
+            background: "rgba(0, 240, 255, 0.1)",
+            border: "1px solid rgba(0, 240, 255, 0.4)",
+            color: "#00f0ff"
+          }}>
+            <Terminal size={15} />
+          </div>
+          <span style={{ fontWeight: 600 }}>
+            breno<span style={{ color: "#00f0ff" }}>@dev</span>:~#
+          </span>
+        </a>
 
-        <ul className="navbar-desktop" style={{ display: "flex", gap: "2rem", listStyle: "none", alignItems: "center" }}>
+        <ul className="navbar-desktop" style={{ display: "flex", gap: "1.75rem", listStyle: "none", alignItems: "center" }}>
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 style={{
-                  fontSize: "0.85rem",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.78rem",
                   textTransform: "uppercase",
-                  letterSpacing: "0.1em",
+                  letterSpacing: "0.08em",
                   color: "var(--fg)",
                   textDecoration: "none",
-                  fontWeight: 500,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                  transition: "color 0.2s"
                 }}
+                className="hover:text-[#00f0ff]"
               >
+                <span style={{ color: "#00f0ff", opacity: 0.7 }}>[{link.id}]</span>
                 {link.label}
               </a>
             </li>
           ))}
-          <li><ModeToggle /></li>
+          <li style={{ borderLeft: "1px solid var(--border)", paddingLeft: "1rem" }}>
+          </li>
         </ul>
-
-        <div className="navbar-mobile" style={{ display: "none", alignItems: "center", gap: "0.75rem" }}>
-          <ModeToggle />
-          <button
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "0.25rem",
-              color: "var(--fg)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-            }}
-          >
-            <span style={{ display: "block", width: "22px", height: "1.5px", background: "var(--fg)", transition: "all 0.3s", transform: open ? "rotate(45deg) translate(4.5px, 4.5px)" : "none" }} />
-            <span style={{ display: "block", width: "22px", height: "1.5px", background: "var(--fg)", transition: "all 0.3s", opacity: open ? 0 : 1 }} />
-            <span style={{ display: "block", width: "22px", height: "1.5px", background: "var(--fg)", transition: "all 0.3s", transform: open ? "rotate(-45deg) translate(4.5px, -4.5px)" : "none" }} />
-          </button>
-        </div>
       </nav>
 
       {open && (
@@ -149,14 +144,14 @@ export function Navbar() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-end", 
-            textAlign: "right",     
+            alignItems: "flex-start", 
             listStyle: "none",
-            padding: "1rem 1.5rem 1.75rem",
-            gap: "1.25rem",
-            borderTop: "0.5px solid var(--border)",
+            padding: "1.25rem 1.5rem",
+            gap: "1rem",
+            borderTop: "1px solid var(--border)",
             background: "var(--bg-blur)",
             backdropFilter: "blur(12px)",
+            fontFamily: "var(--font-mono)"
           }}
         >
           {links.map((link) => (
@@ -165,16 +160,17 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setOpen(false)}
                 style={{
-                  display: "block", 
-                  fontSize: "0.95rem",
+                  display: "flex", 
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.85rem",
                   textTransform: "uppercase",
-                  letterSpacing: "0.1em",
                   color: "var(--fg)",
                   textDecoration: "none",
-                  fontWeight: 500,
-                  padding: "0.25rem 0",
+                  padding: "0.35rem 0",
                 }}
               >
+                <span style={{ color: "#00f0ff" }}>[{link.id}]</span>
                 {link.label}
               </a>
             </motion.li>

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLaunching, setIsLaunching] = useState(false);
   const { scrollY } = useScroll();
 
   useEffect(() => {
@@ -24,66 +25,94 @@ export function ScrollToTop() {
         setIsVisible(true);
       } else {
         setIsVisible(false);
+        setIsLaunching(false);
       }
     });
   }, [scrollY]);
 
   const scrollToTop = () => {
+    setIsLaunching(true);
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+
+    setTimeout(() => {
+      setIsLaunching(false);
+    }, 800);
   };
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.8, y: 0 }}
+          animate={
+            isLaunching
+              ? { y: -250, opacity: [1, 1, 0], scale: 1.1 }
+              : { opacity: 1, scale: 1, y: 0 }
+          }
           exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
+          transition={{
+            duration: isLaunching ? 0.6 : 0.2,
+            ease: isLaunching ? "easeIn" : "easeInOut",
+          }}
           onClick={scrollToTop}
           aria-label="Voltar ao topo"
           style={{
             position: "fixed",
-            bottom: isMobile ? "3.2rem" : "2.5rem",
+            bottom: isMobile ? "2.5rem" : "2.5rem",
             right: isMobile ? "1.5rem" : "2.5rem",
-            width: isMobile ? "40px" : "45px", 
-            height: isMobile ? "40px" : "45px",
+            width: isMobile ? "44px" : "48px",
+            height: isMobile ? "44px" : "48px",
             borderRadius: "50%",
-            background: "var(--card-bg)",
-            border: "0.5px solid var(--border)",
-            color: "var(--fg)",
+            background: "rgba(15, 23, 42, 0.85)",
+            border: "1px solid #00f0ff",
+            color: "#00f0ff",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
-            zIndex: 40,
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
+            zIndex: 50,
+            boxShadow: "0 0 15px rgba(0, 240, 255, 0.3)",
             backdropFilter: "blur(8px)",
-            padding: 0, 
+            padding: 0,
+            overflow: "visible",
           }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(0, 240, 255, 0.6)" }}
+          whileTap={{ scale: 0.9 }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2.5} 
-            stroke="currentColor"
-            style={{ 
-              width: isMobile ? "16px" : "18px", 
-              height: isMobile ? "16px" : "18px",
-              display: "block", 
-            }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+          {isLaunching && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "32px", opacity: 1 }}
+              style={{
+                position: "absolute",
+                bottom: "-26px",
+                width: "8px",
+                background: "linear-gradient(180deg, #00f0ff, #ff007f, transparent)",
+                borderRadius: "4px",
+                filter: "blur(2px)",
+              }}
             />
+          )}
+
+          <svg
+            width={isMobile ? "18" : "20"}
+            height={isMobile ? "18" : "20"}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ display: "block" }}
+          >
+            <path d="M12 2C12 2 6 7 6 14v4l-3 3h18l-3-3v-4c0-7-6-12-6-12z" />
+            <path d="M6 14h12" />
+            <circle cx="12" cy="10" r="1.5" />
+            <path d="M9 21l3-3 3 3" />
           </svg>
         </motion.button>
       )}
