@@ -2,33 +2,38 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Cpu, Terminal, Shield, Sparkles } from "lucide-react";
 
 const cards = [
   {
-    num: "01",
-    title: "Backend",
-    text: "Construção de ecossistemas corporativos seguros e de alto desempenho, priorizando APIs REST robustas sob os ecossistemas .NET e Java.",
-    accent: "rgba(79,142,247,0.6)",
-    accentSoft: "rgba(79,142,247,0.07)",
+    num: "CLASS_01",
+    title: "Backend Engineering",
+    text: "Construção de ecossistemas corporativos seguros e de alto desempenho, priorizando APIs REST robustas sob os ecossistemas .NET e Java Spring Boot.",
+    accent: "#00f0ff",
+    accentSoft: "rgba(0, 240, 255, 0.06)",
+    icon: Cpu
   },
   {
-    num: "02",
-    title: "Frontend",
-    text: "Desenvolvimento de interfaces rápidas, intuitivas e esteticamente minimalistas com React e Next.js, mantendo o foco total na retenção do usuário.",
-    accent: "rgba(168,85,247,0.6)",
-    accentSoft: "rgba(168,85,247,0.07)",
+    num: "CLASS_02",
+    title: "Frontend Matrix",
+    text: "Desenvolvimento de interfaces rápidas, intuitivas e esteticamente cibernéticas com React e Next.js, focando em UX e máxima retenção do usuário.",
+    accent: "#bb86fc",
+    accentSoft: "rgba(187, 134, 252, 0.06)",
+    icon: Sparkles
   },
   {
-    num: "03",
-    title: "Arquitetura",
-    text: "Domínio prático de padrões de mercado (Repository, Unit of Work, DTOs) garantindo código escalável, testável e fácil de manter em equipe.",
-    accent: "rgba(34,197,94,0.6)",
-    accentSoft: "rgba(34,197,94,0.07)",
+    num: "CLASS_03",
+    title: "System Architecture",
+    text: "Domínio prático de padrões de mercado (Repository, Unit of Work, Clean Arch, DTOs) garantindo código escalável, testável e fácil de manter em equipe.",
+    accent: "#4ade80",
+    accentSoft: "rgba(74, 222, 128, 0.06)",
+    icon: Shield
   },
 ];
 
 function Card({ card, index }: { card: typeof cards[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
+  const Icon = card.icon;
 
   return (
     <motion.div
@@ -45,7 +50,7 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
         padding: "2.5rem 2rem",
         position: "relative",
         overflow: "hidden",
-        transition: "background 0.4s ease",
+        transition: "background 0.4s ease, border-color 0.4s ease",
         cursor: "default",
       }}
     >
@@ -63,31 +68,35 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
         }}
       />
 
-      <motion.p
-        animate={{ color: hovered ? card.accent : "rgba(79,142,247,0.12)" }}
-        transition={{ duration: 0.3 }}
-        style={{
-          fontFamily: "var(--font-serif)",
-          fontSize: "3rem",
-          lineHeight: 1,
-          marginBottom: "1.5rem",
-        }}
-      >
-        {card.num}
-      </motion.p>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+        <motion.span
+          animate={{ color: hovered ? card.accent : "var(--muted-custom)" }}
+          transition={{ duration: 0.3 }}
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.8rem",
+            letterSpacing: "0.15em",
+            fontWeight: 600,
+          }}
+        >
+          [{card.num}]
+        </motion.span>
+        <Icon size={20} style={{ color: hovered ? card.accent : "var(--muted-custom)", transition: "color 0.3s ease" }} />
+      </div>
 
       <h3 style={{
-        fontSize: "1.05rem",
-        fontWeight: 500,
+        fontSize: "1.2rem",
+        fontWeight: 600,
         marginBottom: "0.85rem",
         letterSpacing: "-0.01em",
         color: "var(--fg)",
+        fontFamily: "var(--font-sans)",
       }}>
         {card.title}
       </h3>
 
       <p style={{
-        fontSize: "0.87rem",
+        fontSize: "0.9rem",
         fontWeight: 300,
         lineHeight: 1.75,
         color: "var(--muted-custom)",
@@ -96,7 +105,7 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
       </p>
 
       <motion.div
-        animate={{ opacity: hovered ? 1 : 0 }}
+        animate={{ opacity: hovered ? 0.3 : 0 }}
         transition={{ duration: 0.4 }}
         style={{
           position: "absolute",
@@ -106,7 +115,7 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
           height: "120px",
           borderRadius: "50%",
           background: card.accent,
-          filter: "blur(50px)",
+          filter: "blur(40px)",
           pointerEvents: "none",
         }}
       />
@@ -116,7 +125,7 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
 
 export function About() {
   return (
-    <section id="about" style={{ padding: "5rem 1.5rem", borderBottom: "0.5px solid var(--border)" }}>
+    <section id="about" style={{ padding: "6rem 1.5rem", borderBottom: "1px solid var(--border)", position: "relative" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
 
         <motion.div
@@ -126,10 +135,20 @@ export function About() {
           viewport={{ once: true }}
           style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}
         >
-          <p style={{ fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.22em", color: "var(--muted-custom)", whiteSpace: "nowrap" }}>
-            Sobre mim
+          <p style={{
+            fontSize: "0.78rem",
+            fontFamily: "var(--font-mono)",
+            textTransform: "uppercase",
+            letterSpacing: "0.22em",
+            color: "#00f0ff",
+            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem"
+          }}>
+            <Terminal size={14} /> 01. CHARACTER_LORE
           </p>
-          <div style={{ flex: 1, height: "0.5px", background: "var(--section-label-line)" }} />
+          <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>
 
         <motion.h2
@@ -138,22 +157,24 @@ export function About() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           style={{
-            fontFamily: "var(--font-serif)",
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            lineHeight: 1.15,
+            fontFamily: "var(--font-mono)",
+            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+            lineHeight: 1.2,
             letterSpacing: "-0.02em",
-            marginBottom: "3rem",
-            maxWidth: "640px",
+            marginBottom: "3.5rem",
+            maxWidth: "780px",
             color: "var(--fg)",
+            fontWeight: 700,
           }}
         >
-          Eu transformo regras de negócio complexas em arquiteturas de código limpas e escaláveis.
+          Transformando regras de negócio complexas em <span style={{ color: "#00f0ff" }}>arquiteturas resilientes</span> e código limpo.
         </motion.h2>
 
         <div className="about-cards" style={{
-          border: "0.5px solid var(--border)",
+          border: "1px solid var(--border)",
           borderRadius: "8px",
           overflow: "hidden",
+          background: "var(--bg)"
         }}>
           {cards.map((card, i) => (
             <Card key={card.num} card={card} index={i} />

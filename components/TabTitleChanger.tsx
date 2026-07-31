@@ -8,7 +8,7 @@ export function TabTitleChanger() {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "👋 Volte aqui!";
+        document.title = "See You Space Cowboy... 🚀";
       } else {
         document.title = originalTitle;
       }
