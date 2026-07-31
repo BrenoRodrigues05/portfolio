@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
-import { TabTitleChanger } from "@/components/TabTitleChanger";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +19,18 @@ export default function RootLayout({
       lang="pt-BR"
       className={cn("dark font-sans", geist.variable, mono.variable)}
     >
-      <body className="antialiased bg-background text-foreground selection:bg-cyan-500/20 selection:text-cyan-400">
-        <TabTitleChanger />
-        {children}
+      <body className="relative min-h-screen antialiased bg-slate-950 text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-400 overflow-x-hidden">
+        
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden transform-gpu">
+          <div className="absolute inset-0 bg-cyber-glow" />
+          <div className="absolute inset-0 bg-cyber-grid opacity-80" />
+          <div className="absolute inset-0 bg-scanlines opacity-30" />
+        </div>
+
+        <div className="relative z-10">
+          {children}
+        </div>
+
       </body>
     </html>
   );
