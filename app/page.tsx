@@ -9,6 +9,7 @@ import { Contact } from "@/sections/Contact";
 import { Certifications } from "@/sections/Certifications";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CustomCursor } from "@/components/CustomCursor";
+import { FeaturedProject } from "@/components/FeaturedProject";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <CustomCursor />
       <Navbar />
       <Hero />
+      <FeaturedProject />
       <About />
       <Stack />
       <Certifications />
