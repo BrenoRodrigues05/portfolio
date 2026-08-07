@@ -80,7 +80,7 @@ export function Contact() {
             color: "#bb86fc",
             whiteSpace: "nowrap"
           }}>
-            05. ESTABELECER_CONTATO
+            06. ESTABELECER_CONTATO
           </p>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>

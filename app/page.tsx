@@ -9,7 +9,8 @@ import { Contact } from "@/sections/Contact";
 import { Certifications } from "@/sections/Certifications";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CustomCursor } from "@/components/CustomCursor";
-import { FeaturedProject } from "@/components/FeaturedProject";
+import { FeaturedProject } from "@/sections/FeaturedProject";
+import {PersonalBio} from "@/sections/PersonalBio";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <FeaturedProject />
+      <PersonalBio />
       <About />
       <Stack />
       <Certifications />

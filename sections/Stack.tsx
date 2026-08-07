@@ -143,7 +143,7 @@ export function Stack() {
             color: "#bb86fc",
             whiteSpace: "nowrap"
           }}>
-            02. SKILL_INVENTORY
+            03. SKILL_INVENTORY
           </p>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>
