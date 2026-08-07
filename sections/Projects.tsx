@@ -32,7 +32,7 @@ const projects = [
     technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     testTech: "Clean UI / Componentized",
     github: "https://github.com/BrenoRodrigues05/academia-web",
-    accent: "#ff007f", // Rosa Neon Cyberpunk
+    accent: "#ff007f",
     accentSoft: "rgba(255, 0, 127, 0.05)",
   },
   {

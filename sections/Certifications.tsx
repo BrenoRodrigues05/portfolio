@@ -247,7 +247,7 @@ export function Certifications() {
               whiteSpace: "nowrap",
             }}
           >
-            03. ACHIEVEMENTS_LOG
+            04. ACHIEVEMENTS_LOG
           </p>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>

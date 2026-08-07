@@ -2,14 +2,15 @@
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { useState } from "react";
-import { Terminal } from "lucide-react"; 
+import { Terminal, Menu, X } from "lucide-react"; 
 
 const links = [
-  { id: "01", label: "Sobre", href: "#about" },
-  { id: "02", label: "Stack", href: "#stack" },
-  { id: "03", label: "Certificações", href: "#certifications" },
-  { id: "04", label: "Projetos", href: "#projects" },
-  { id: "05", label: "Contato", href: "#contact" },
+  { id: "01", label: "Biografia", href: "#about-bio" },
+  { id: "02", label: "Sobre", href: "#about" },
+  { id: "03", label: "Stack", href: "#stack" },
+  { id: "04", label: "Certificações", href: "#certifications" },
+  { id: "05", label: "Projetos", href: "#projects" },
+  { id: "06", label: "Contato", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -106,7 +107,7 @@ export function Navbar() {
           </span>
         </a>
 
-        <ul className="navbar-desktop" style={{ display: "flex", gap: "1.75rem", listStyle: "none", alignItems: "center" }}>
+        <ul className="hidden md:flex items-center gap-[1.75rem] list-none">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -130,9 +131,25 @@ export function Navbar() {
               </a>
             </li>
           ))}
-          <li style={{ borderLeft: "1px solid var(--border)", paddingLeft: "1rem" }}>
-          </li>
         </ul>
+
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle Menu"
+          className="flex md:hidden"
+          style={{
+            background: "rgba(0, 240, 255, 0.05)",
+            border: "1px solid rgba(0, 240, 255, 0.3)",
+            borderRadius: "4px",
+            padding: "0.4rem",
+            color: "#00f0ff",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </nav>
 
       {open && (
@@ -140,12 +157,8 @@ export function Navbar() {
           initial="hidden"
           animate="visible"
           variants={menuVariants}
-          className="navbar-mobile"
+          className="flex md:hidden flex-col items-start list-none"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start", 
-            listStyle: "none",
             padding: "1.25rem 1.5rem",
             gap: "1rem",
             borderTop: "1px solid var(--border)",

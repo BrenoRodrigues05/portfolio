@@ -146,7 +146,7 @@ export function About() {
             alignItems: "center",
             gap: "0.5rem"
           }}>
-            <Terminal size={14} /> 01. CHARACTER_LORE
+            <Terminal size={14} /> 02. CHARACTER_LORE
           </p>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </motion.div>
